@@ -32,5 +32,9 @@ FactoryBot.define do
     trait :disabled do
       enabled { false }
     end
+
+    trait :premium do
+      premium { true }
+    end
   end
 end

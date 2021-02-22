@@ -29,6 +29,7 @@ group :development, :test do
   gem 'pry'
   gem 'better_errors'
   gem 'bullet'
+  gem 'factory_bot_rails'
 end
 
 group :test do
@@ -40,7 +41,6 @@ group :test do
   gem 'webdrivers', '~> 4.0'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
-  gem 'factory_bot_rails'
   gem 'database_cleaner'
   gem 'simplecov', '0.16.1'
   gem 'rubocop-rspec', require: false

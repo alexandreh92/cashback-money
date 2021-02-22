@@ -373,6 +373,7 @@ DEPENDENCIES
   devise
   devise-jwt
   dotenv-rails (~> 2.7.5)
+  factory_bot
   factory_bot_rails
   faker
   fog-aws
