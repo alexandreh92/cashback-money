@@ -6,6 +6,11 @@ class ApplicationController < ActionController::API
   respond_to :json
   around_action :handle_exceptions
 
+  # React HTML Fallback
+  def fallback_index_html
+    render file: 'public/index.html'
+  end
+
   def handle_exceptions
     yield
   rescue ActiveRecord::RecordNotFound => e

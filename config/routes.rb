@@ -15,4 +15,9 @@ Rails.application.routes.draw do
       delete 'sign_out', to: 'api/sessions#destroy', as: :destroy_user_session
     end
   end
+
+  # Fallback Routes to React
+  get '*path', to: 'application#fallback_index_html', constraints: lambda { |request|
+    !request.xhr? && request.format.html?
+  }
 end
