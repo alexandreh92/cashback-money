@@ -21,9 +21,11 @@ gem 'fog-aws'
 gem 'will_paginate', '~> 3.1.0'
 gem 'rswag'
 
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rubocop'
+  gem 'rubocop-rails'
   gem 'pry'
   gem 'better_errors'
   gem 'bullet'
