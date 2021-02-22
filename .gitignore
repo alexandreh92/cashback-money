@@ -43,3 +43,6 @@
 
 # simplecov
 /coverage/*
+
+# .env files
+*.env
