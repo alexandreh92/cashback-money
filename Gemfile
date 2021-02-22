@@ -10,7 +10,6 @@ gem 'puma', '~> 4.1'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'rack-cors'
-gem 'rolify'
 gem 'dotenv-rails', '~> 2.7.5'
 gem 'devise'
 gem 'devise-jwt'
@@ -20,7 +19,8 @@ gem 'carrierwave', '~> 2.0'
 gem 'fog-aws'
 gem 'will_paginate', '~> 3.1.0'
 gem 'rswag'
-
+gem "pundit"
+gem "rolify"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

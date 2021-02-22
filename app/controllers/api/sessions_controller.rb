@@ -4,7 +4,7 @@ module Api
       user = User.find_by_email(user_params[:email])
       if user.present? && user.valid_password?(user_params[:password])
         sign_in(user)
-        render json: user
+        render json: user.as_json(methods: :roles)
       else
         render json: {
           message: I18n.t('controllers.messages.login_failure'),

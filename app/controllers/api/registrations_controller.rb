@@ -5,7 +5,7 @@ module Api
 
       if user.present? && user.errors.none?
         sign_in(user)
-        render json: user
+        render json: user.as_json(methods: :roles)
       else
         render json: {
           message: I18n.t(

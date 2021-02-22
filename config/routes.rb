@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   namespace :api do
     resources :offers, only: [:index]
+
+    namespace :backoffice do
+      resources :offers, only: [:index]
+    end
   end
 
   scope :api do
