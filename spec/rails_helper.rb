@@ -4,7 +4,6 @@ require 'pry'
 require 'shoulda/matchers'
 require 'rspec/json_expectations'
 require 'spec_helper'
-require 'sidekiq/testing'
 require 'rspec/rails'
 
 # Prevent database truncation if the environment is production
@@ -12,12 +11,6 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 
 # Add additional requires below this line. Rails is not loaded until this point!
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
-
-RSpec::Sidekiq.configure do |config|
-  config.clear_all_enqueued_jobs = true
-  config.enable_terminal_colours = false
-  config.warn_when_jobs_not_processed_by_sidekiq = false
-end
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
