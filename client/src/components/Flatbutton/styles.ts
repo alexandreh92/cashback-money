@@ -15,7 +15,7 @@ export const Container = styled.button`
   border-radius: 10px;
 
   background: ${({ theme }) => theme.colors.lemoney};
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.buttonText};
 
   font: bold 14px/16px 'Roboto', sans-serif;
   text-transform: uppercase;

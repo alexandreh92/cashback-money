@@ -1,9 +1,23 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import Card from '~/components/Card';
+
+import { Container } from './styles';
 
 const Offers: React.FC = () => {
-  return <div />;
+  return (
+    <Container>
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+    </Container>
+  );
 };
 
 export default Offers;

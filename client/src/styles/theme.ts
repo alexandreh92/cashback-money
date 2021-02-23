@@ -10,14 +10,15 @@ export const lightTheme = {
     lemoney: '#00f0a2',
     placeholder: '#bbb',
     error: '#f84a4b',
+    buttonText: '#3f3f3f',
   },
 };
 
 export const darkTheme = {
   mode: 'dark',
   colors: {
-    backgroundPrimary: '#2a2a2a',
-    backgroundSecondary: '#1a1a1a',
+    backgroundSecondary: '#2a2a2a',
+    backgroundPrimary: '#1a1a1a',
     backgroundContrast: '#ebebeb',
     tableBorders: '#787878',
     black: '#ebebeb',
@@ -25,5 +26,6 @@ export const darkTheme = {
     lemoney: '#00f0a2',
     placeholder: '#bbb',
     error: '#f84a4b',
+    buttonText: '#3f3f3f',
   },
 };

@@ -5,6 +5,7 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: background-color 200ms ease, color 200ms ease
   }
 
   html, body, #root {
@@ -19,6 +20,7 @@ export default createGlobalStyle`
 
     font-family: 'Roboto', sans-serif;
   }
+
 
   :root {
     display: flex;
