@@ -41,6 +41,15 @@ export interface Offer {
   updated_at: string;
 }
 
+export interface Role {
+  id: number;
+  name: string;
+  resource_type?: string;
+  resource_id?: number;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface OffersResponse extends PaginatedResponse {
   offers: Offer[];
 }

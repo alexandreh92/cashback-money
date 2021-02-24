@@ -5,6 +5,7 @@ import { ApplicationState } from '~/@types';
 import Dropdown from '~/components/Dropdown';
 import Switch from '~/components/Switch';
 
+import AuthActions from '~/store/ducks/auth';
 import ThemeActions from '~/store/ducks/theme';
 
 import { lightTheme, darkTheme } from '~/styles/theme';
@@ -26,18 +27,27 @@ import {
 } from './styles';
 
 const { changeTheme } = ThemeActions;
+const { signOutRequest } = AuthActions;
 
-const Default: React.FC = ({ children }) => {
+interface Props {
+  noBodyPadding?: boolean;
+}
+
+const Default: React.FC<Props> = ({ children, noBodyPadding }) => {
   /* Hooks */
   const dispatch = useDispatch();
 
   const { name, email } = useSelector((state: ApplicationState) => state.user);
   const { mode } = useSelector((state: ApplicationState) => state.theme);
 
-  /* Hooks */
+  /* Callbacks */
   const handleOnThemeChange = useCallback(() => {
     dispatch(changeTheme(mode === 'dark' ? lightTheme : darkTheme));
   }, [dispatch, mode]);
+
+  const handleLogout = useCallback(() => {
+    dispatch(signOutRequest());
+  }, [dispatch]);
 
   return (
     <Container>
@@ -60,11 +70,13 @@ const Default: React.FC = ({ children }) => {
               <Switch onClick={handleOnThemeChange} />
             </SwitchContainer>
             <Separator />
-            <LogoutButton>Logout</LogoutButton>
+            <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
           </Dropdown.Menu>
         </Dropdown>
       </Header>
-      <Body id="main-body">{children}</Body>
+      <Body id="main-body" noPadding={noBodyPadding}>
+        {children}
+      </Body>
       <Footer>
         <Regards>
           Made with ♥ by <span>Alexandre Stapenhorst</span>

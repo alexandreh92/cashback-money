@@ -7,9 +7,9 @@ import { ITypes, ICreators } from './types';
 const { Types, Creators } = createActions<ITypes, ICreators>(
   {
     signInRequest: ['email', 'password'],
-    signInSuccess: ['id', 'token', 'name', 'email'],
+    signInSuccess: ['id', 'name', 'email', 'token', 'roles'],
     signUpRequest: ['name', 'email', 'password', 'password_confirmation'],
-    signUpSuccess: ['id', 'name', 'email', 'token'],
+    signUpSuccess: ['id', 'name', 'email', 'token', 'roles'],
     signOutRequest: null,
   },
   { prefix: '@auth/' }

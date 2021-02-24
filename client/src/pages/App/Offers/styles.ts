@@ -24,6 +24,16 @@ export const Container = styled.div`
   grid-auto-rows: 290px;
   grid-gap: 0 30px;
   justify-content: center;
+
+  @media (max-width: 1090px) {
+    grid-template-columns: repeat(3, 230px);
+  }
+  @media (max-width: 830px) {
+    grid-template-columns: repeat(2, 230px);
+  }
+  @media (max-width: 550px) {
+    grid-template-columns: 230px;
+  }
 `;
 
 export const InputWrapper = styled.div`
@@ -63,6 +73,10 @@ export const Input = styled.input`
       fill: ${({ theme }) => lighten(0.2, theme.colors.lemoney)}!important;
       transition: all 200ms ease;
     }
+  }
+
+  @media (max-width: 550px) {
+    width: 260px;
   }
 `;
 

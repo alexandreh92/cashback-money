@@ -54,12 +54,19 @@ export const Name = styled.span`
   font-weight: bold;
   color: ${({ theme }) => theme.colors.black};
 
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
   & > span {
     color: ${({ theme }) => theme.colors.lemoney};
   }
 `;
 
-export const Body = styled.section`
+type BodyType = {
+  noPadding?: boolean;
+};
+
+export const Body = styled.section<BodyType>`
   background: ${({ theme }) => theme.colors.backgroundPrimary};
   flex: 1;
   display: block;
@@ -83,6 +90,8 @@ export const Body = styled.section`
     background: ${({ theme }) => theme.colors.backgroundPrimary};
     transition: all 200ms ease;
   }
+
+  ${({ noPadding }) => noPadding && `padding: 0;`}
 `;
 
 export const Footer = styled.header`

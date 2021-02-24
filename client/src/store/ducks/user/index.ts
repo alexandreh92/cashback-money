@@ -14,14 +14,15 @@ export const INITIAL_STATE: IState = {
   id: undefined,
   name: '',
   email: '',
+  roles: [],
 };
 
 /* Reducers */
 
 export const handleSignInSuccess = (
   state: IState,
-  { name, email, id }: AuthPropActions
-): IState => ({ ...state, name, email, id });
+  { name, email, id, roles }: AuthPropActions
+): IState => ({ ...state, name, email, id, roles });
 
 /* Reducers to types */
 

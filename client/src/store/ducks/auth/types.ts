@@ -1,5 +1,6 @@
 import { DefaultActionTypes, DefaultActionCreators } from 'reduxsauce';
 import { AnyAction } from 'redux';
+import { Role } from '~/@types';
 
 /* Payloads */
 
@@ -7,6 +8,7 @@ export interface ISetPropAction extends AnyAction {
   email: string;
   password: string;
   token: string;
+  roles: Role[];
 }
 
 /* Action Types */
@@ -25,9 +27,10 @@ export interface ICreators extends DefaultActionCreators {
   signInRequest: (email: string, password: string) => ISetPropAction;
   signInSuccess: (
     id: number,
-    token: string,
     name: string,
-    email: string
+    email: string,
+    token: string,
+    roles: Role[]
   ) => ISetPropAction;
   signUpRequest: (
     name: string,
@@ -39,7 +42,8 @@ export interface ICreators extends DefaultActionCreators {
     id: number,
     name: string,
     email: string,
-    token: string
+    token: string,
+    roles: Role[]
   ) => ISetPropAction;
   signOutRequest: () => ISetPropAction;
 }

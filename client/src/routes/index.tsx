@@ -3,9 +3,11 @@ import { Switch } from 'react-router-dom';
 
 import PrivateRoute from '~/components/PrivateRoute';
 import GuestRoute from '~/components/GuestRoute';
+import BackofficeRoute from '~/components/BackofficeRoute';
 
 import appRoutes from './App';
 import authRoutes from './Auth';
+import backofficeRoutes from './Backoffice';
 
 const Routes: React.FC = () => {
   return (
@@ -15,6 +17,9 @@ const Routes: React.FC = () => {
       ))}
       {authRoutes.map((authRoute, idx) => (
         <GuestRoute key={`auth_${idx}`} {...authRoute} />
+      ))}
+      {backofficeRoutes.map((authRoute, idx) => (
+        <BackofficeRoute key={`auth_${idx}`} {...authRoute} />
       ))}
     </Switch>
   );
