@@ -1,10 +1,10 @@
 module Api
   class OffersController < ApiController
     def index
-      offers = Offer.enabled.paginate(
+      offers = Offer.enabled.search(params[:search]).paginate(
         page: params[:page],
         per_page: params[:per_page]
-      ).order(created_at: :desc, premium: :desc)
+      ).order(premium: :desc)
 
       render json: {
         offers: offers,

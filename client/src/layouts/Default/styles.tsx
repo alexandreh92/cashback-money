@@ -68,6 +68,21 @@ export const Body = styled.section`
   padding: 30px 0 30px;
 
   overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.colors.lemoney};
+    transition: all 200ms ease;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: ${({ theme }) => theme.colors.backgroundPrimary};
+    transition: all 200ms ease;
+  }
 `;
 
 export const Footer = styled.header`

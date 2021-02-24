@@ -64,7 +64,7 @@ const Default: React.FC = ({ children }) => {
           </Dropdown.Menu>
         </Dropdown>
       </Header>
-      <Body>{children}</Body>
+      <Body id="main-body">{children}</Body>
       <Footer>
         <Regards>
           Made with ♥ by <span>Alexandre Stapenhorst</span>

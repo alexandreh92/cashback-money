@@ -13,6 +13,14 @@ class Offer < ApplicationRecord
                     where(enabled: true).where(lt_now.and(gt_now.or(end_nil)))
                   }
 
+  scope :search, lambda { |search|
+    search = "%#{search&.downcase&.parameterize(separator: ' ')}%"
+
+    name_matches = arel_table[:advertiser_name].matches(search)
+
+    where(name_matches)
+  }
+
   # Methods
   def status
     enabled && (

@@ -13,17 +13,19 @@ export function* signIn({ email, password }: ISetPropAction): SagaIterator {
   try {
     const res = yield call(api.post, '/sessions', { email, password });
 
-    const { name, token, user_id } = res.data;
+    const { name, id } = res.data;
 
-    yield put(signInSuccess(user_id, token, name, email));
+    const token = res.headers.authorization.replace('Bearer ', '');
+
+    yield put(signInSuccess(id, token, name, email));
     toastr.success('Successful', 'You are logged in.');
   } catch (err) {
-    if (err.response.status === 401) {
+    if (err.response?.status === 401) {
       toastr.error('Error', 'Some information is wrong.');
     } else {
       toastr.error('Error', 'Connection failed.');
     }
-    console.log(err.response);
+    console.log(err);
   }
 }
 
