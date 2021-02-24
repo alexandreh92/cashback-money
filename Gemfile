@@ -18,7 +18,6 @@ gem 'faker'
 gem 'carrierwave', '~> 2.0'
 gem 'fog-aws'
 gem 'will_paginate', '~> 3.1.0'
-gem 'rswag'
 gem "pundit"
 gem "rolify"
 
@@ -30,6 +29,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'bullet'
   gem 'factory_bot_rails'
+  gem 'rswag'
 end
 
 group :test do
@@ -39,7 +39,6 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'webdrivers', '~> 4.0'
-  gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'database_cleaner'
   gem 'simplecov', '0.16.1'
@@ -48,7 +47,7 @@ group :test do
 end
 
 group :development do
-gem 'rails-erd'
+  gem 'rails-erd'
   gem 'listen', '~> 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
