@@ -8,7 +8,7 @@ module Api
         ).order(created_at: :desc)
 
         render json: {
-          offers: offers,
+          offers: offers.as_json(methods: :status),
           current_page: offers.current_page,
           total_pages: offers.total_pages
         }
@@ -45,6 +45,21 @@ module Api
           }, status: :bad_request
         end
       end
+
+      def toggle_status
+        offer = Offer.find(offer_params[:id])
+
+        return unless offer.toggle!(:enabled)
+
+        render json: offer.as_json(methods: :status)
+      end
+
+      private
+
+        def offer_params
+          params.permit(:id, :advertiser_name, :description, :url, :starts_at, :ends_at,
+                        :premium, :enabled)
+        end
     end
   end
 end

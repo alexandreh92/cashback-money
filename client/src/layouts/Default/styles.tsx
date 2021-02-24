@@ -37,6 +37,7 @@ export const Header = styled.header`
 export const HeaderLeft = styled.div`
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const Avatar = styled.img`
@@ -145,11 +146,17 @@ export const OptionText = styled.span`
 export const LogoutButton = styled(Dropdown.Item)`
   align-items: center;
   justify-content: center;
+  margin-top: 5px;
+`;
+
+export const AdminButton = styled(Dropdown.Item)`
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
 `;
 
 export const Separator = styled.div`
   height: 1px;
   width: 100%;
   background: ${({ theme }) => theme.colors.tableBorders};
-  margin-bottom: 5px;
 `;

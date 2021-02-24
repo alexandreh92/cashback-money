@@ -1,6 +1,7 @@
-import React, { useCallback } from 'react';
+import React, { Fragment, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ApplicationState } from '~/@types';
+import { useHistory } from 'react-router-dom';
 
 import Dropdown from '~/components/Dropdown';
 import Switch from '~/components/Switch';
@@ -24,6 +25,7 @@ import {
   OptionText,
   Separator,
   LogoutButton,
+  AdminButton,
 } from './styles';
 
 const { changeTheme } = ThemeActions;
@@ -36,8 +38,11 @@ interface Props {
 const Default: React.FC<Props> = ({ children, noBodyPadding }) => {
   /* Hooks */
   const dispatch = useDispatch();
+  const history = useHistory();
 
-  const { name, email } = useSelector((state: ApplicationState) => state.user);
+  const { name, email, roles } = useSelector(
+    (state: ApplicationState) => state.user
+  );
   const { mode } = useSelector((state: ApplicationState) => state.theme);
 
   /* Callbacks */
@@ -49,10 +54,18 @@ const Default: React.FC<Props> = ({ children, noBodyPadding }) => {
     dispatch(signOutRequest());
   }, [dispatch]);
 
+  const handleNavigateHome = useCallback(() => {
+    history.push('/');
+  }, [history]);
+
+  const handleNavigateBackoffice = useCallback(() => {
+    history.push('/backoffice');
+  }, [history]);
+
   return (
     <Container>
       <Header>
-        <HeaderLeft>
+        <HeaderLeft onClick={handleNavigateHome}>
           <Avatar
             src={`https://avatars.dicebear.com/api/avataaars/${email}.svg`}
           />
@@ -69,6 +82,15 @@ const Default: React.FC<Props> = ({ children, noBodyPadding }) => {
               <OptionText>Dark-Mode</OptionText>
               <Switch onClick={handleOnThemeChange} />
             </SwitchContainer>
+            {roles.some((r) => r.name === 'admin') && (
+              <Fragment>
+                <Separator />
+                <AdminButton onClick={handleNavigateBackoffice}>
+                  Admin mode
+                </AdminButton>
+              </Fragment>
+            )}
+
             <Separator />
             <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
           </Dropdown.Menu>

@@ -13,7 +13,7 @@ type SectionProps<P> = React.FC<P> & {
 };
 
 const Segment: SectionProps<Props> = ({ children }) => {
-  return <Container>{children}</Container>;
+  return <Container id="main-segment">{children}</Container>;
 };
 
 Segment.Header = Header;

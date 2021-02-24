@@ -1,5 +1,6 @@
 import { IState as AuthState } from '~/store/ducks/auth/types';
 import { IState as OffersState } from '~/store/ducks/offers/types';
+import { IState as BackofficeOffersState } from '~/store/ducks/backoffice/offers/types';
 import { IState as ThemeState } from '~/store/ducks/theme/types';
 import { IState as UserState } from '~/store/ducks/user/types';
 import { ToastrState } from 'react-redux-toastr';
@@ -9,6 +10,7 @@ export type Theme = typeof lightTheme;
 
 export interface ApplicationState {
   auth: AuthState;
+  backofficeOffers: BackofficeOffersState;
   offers: OffersState;
   theme: ThemeState;
   toastr: ToastrState;
@@ -52,4 +54,8 @@ export interface Role {
 
 export interface OffersResponse extends PaginatedResponse {
   offers: Offer[];
+}
+
+export interface BackofficeOffer extends Offer {
+  status: boolean;
 }
