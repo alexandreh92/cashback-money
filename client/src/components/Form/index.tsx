@@ -12,6 +12,7 @@ export interface FormHandles {
   handleOnSubmit: () => void;
   setError: (name: string, error: ErrorOption) => void;
   setValue: (fieldName: string, value: string) => void;
+  reset: (values: any) => void;
 }
 
 interface Props {
@@ -44,6 +45,7 @@ const Form: React.ForwardRefRenderFunction<FormHandles, Props> = (
       setError,
       setValue,
       control,
+      reset,
     };
   });
 

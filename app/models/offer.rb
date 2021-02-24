@@ -3,6 +3,7 @@ class Offer < ApplicationRecord
   validates :advertiser_name, :url, :description, :starts_at, presence: true
   validates :url, format: URI::DEFAULT_PARSER.make_regexp(%w[http https])
   validates :description, length: { maximum: 500 }
+  validates :advertiser_name, uniqueness: true
 
   # Scopes/Singleton methods
   scope :enabled, lambda {

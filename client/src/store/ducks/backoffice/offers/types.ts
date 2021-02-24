@@ -1,7 +1,7 @@
 import { DefaultActionTypes, DefaultActionCreators } from 'reduxsauce';
 import { AnyAction } from 'redux';
 
-import { BackofficeOffer } from '~/@types';
+import { BackofficeOffer, OfferFormObject } from '~/@types';
 
 /* Payloads */
 
@@ -14,6 +14,7 @@ export interface ISetPropAction extends AnyAction {
   search: string;
   offer: BackofficeOffer;
   id: number;
+  values: OfferFormObject;
 }
 
 /* Action Types */
@@ -24,6 +25,10 @@ export interface ITypes extends DefaultActionTypes {
   GET_OFFERS_NEXT_PAGE: 'getOffersNextPage';
   TOGGLE_STATUS_REQUEST: 'toggleStatusRequest';
   TOGGLE_STATUS_SUCCESS: 'toggleStatusSuccess';
+  CREATE_OFFER_REQUEST: 'createOfferRequest';
+  CREATE_OFFER_SUCCESS: 'createOfferSuccess';
+  UPDATE_OFFER_REQUEST: 'updateOfferRequest';
+  UPDATE_OFFER_SUCCESS: 'updateOfferSuccess';
 }
 
 /* Action Creators */
@@ -39,6 +44,10 @@ export interface ICreators extends DefaultActionCreators {
   ) => ISetPropAction;
   toggleStatusRequest: (id: number) => ISetPropAction;
   toggleStatusSuccess: (offer: BackofficeOffer) => ISetPropAction;
+  createOfferRequest: (values: OfferFormObject) => ISetPropAction;
+  createOfferSuccess: (offer: BackofficeOffer) => ISetPropAction;
+  updateOfferRequest: (values: OfferFormObject, id: string) => ISetPropAction;
+  updateOfferSuccess: (offer: BackofficeOffer) => ISetPropAction;
 }
 
 export type IActions = ISetPropAction | AnyAction;

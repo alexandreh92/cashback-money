@@ -6,6 +6,9 @@ import { IState as UserState } from '~/store/ducks/user/types';
 import { ToastrState } from 'react-redux-toastr';
 import { lightTheme } from '~/styles/theme';
 
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
+
 export type Theme = typeof lightTheme;
 
 export interface ApplicationState {
@@ -59,3 +62,22 @@ export interface OffersResponse extends PaginatedResponse {
 export interface BackofficeOffer extends Offer {
   status: boolean;
 }
+
+export type OptionalExceptFor<T, TRequired extends keyof T = keyof T> = Partial<
+  Pick<T, Exclude<keyof T, TRequired>>
+> &
+  Required<Pick<T, TRequired>>;
+
+export type OfferUpdateObject = Pick<
+  Offer,
+  | 'advertiser_name'
+  | 'description'
+  | 'enabled'
+  | 'ends_at'
+  | 'starts_at'
+  | 'premium'
+  | 'id'
+  | 'url'
+>;
+
+export type OfferFormObject = PartialBy<OfferUpdateObject, 'id'>;

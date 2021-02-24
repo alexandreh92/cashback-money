@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import DatePicker from 'react-datepicker';
 
 export const Container = styled.div`
   position: relative;
@@ -15,7 +16,7 @@ export const ErrorMessage = styled.div`
   color: ${({ theme }) => theme.colors.error};
 `;
 
-export const TInput = styled.input`
+export const TInput = styled(DatePicker)`
   width: 100%;
   height: 36px;
 
@@ -26,7 +27,6 @@ export const TInput = styled.input`
   border: 1px solid ${({ theme }) => theme.colors.tableBorders};
 
   background: ${({ theme }) => theme.colors.backgroundSecondary};
-
   transition: all 200ms ease;
 
   color: ${({ theme }) => theme.colors.black};

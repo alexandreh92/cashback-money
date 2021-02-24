@@ -16,6 +16,10 @@ const { Types, Creators } = createActions<ITypes, ICreators>(
     ],
     toggleStatusRequest: ['id'],
     toggleStatusSuccess: ['offer'],
+    createOfferRequest: ['values'],
+    createOfferSuccess: ['offer'],
+    updateOfferRequest: ['values', 'id'],
+    updateOfferSuccess: ['offer'],
   },
   { prefix: '@backofficeOffers/' }
 );

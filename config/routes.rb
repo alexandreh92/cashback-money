@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :offers, only: [:index]
 
     namespace :backoffice do
-      resources :offers, only: [:index] do
+      resources :offers, only: %i[show index create update] do
         post :toggle_status, on: :collection
       end
     end

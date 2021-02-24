@@ -1,6 +1,12 @@
 module Api
   module Backoffice
     class OffersController < BackofficeController
+      def show
+        offer = Offer.find(offer_params[:id])
+
+        render json: offer
+      end
+
       def index
         offers = Offer.all.search(params[:search]).paginate(
           page: params[:page],
@@ -36,7 +42,7 @@ module Api
         if offer.update(offer_params)
           render json: {
             offer: offer,
-            message: 'Offer successfully created'
+            message: 'Offer successfully updated'
           }
         else
           render json: {

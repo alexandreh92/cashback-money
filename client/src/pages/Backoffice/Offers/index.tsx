@@ -67,7 +67,7 @@ const Offers: React.FC = () => {
               <SearchInput onChange={handleSearchChange} />
               <SearchIcon />
             </SearchContainer>
-            <NewButton to="#">New Offer</NewButton>
+            <NewButton to="offers/new">New Offer</NewButton>
           </Right>
         </Segment.Header>
         <Segment.Body noPadding>
