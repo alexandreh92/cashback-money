@@ -5,6 +5,9 @@
   "author": "Alexandre Stapenhorst <eng.alexandreh@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "build": "yarn --cwd client install && yarn --cwd client build",
+    "deploy": "cp -a client/build/. public/",
+    "postinstall": "yarn build && yarn deploy",
     "commit": "git-cz"
   },
   "husky": {
