@@ -5,22 +5,43 @@ import PrivateRoute from '~/components/PrivateRoute';
 import GuestRoute from '~/components/GuestRoute';
 import BackofficeRoute from '~/components/BackofficeRoute';
 
-import appRoutes from './App';
-import authRoutes from './Auth';
-import backofficeRoutes from './Backoffice';
+import Offers from '~/pages/App/Offers';
+
+import SignIn from '~/pages/Auth/SignIn';
+import SignUp from '~/pages/Auth/SignUp';
+
+import BackofficeDashboard from '~/pages/Backoffice/Dashboard';
+import BackofficeOffers from '~/pages/Backoffice/Offers';
+import BackofficeOffersForm from '~/pages/Backoffice/Offers/Form';
 
 const Routes: React.FC = () => {
   return (
     <Switch>
-      {appRoutes.map((appRoute, idx) => (
-        <PrivateRoute key={`app_${idx}`} {...appRoute} />
-      ))}
-      {authRoutes.map((authRoute, idx) => (
-        <GuestRoute key={`auth_${idx}`} {...authRoute} />
-      ))}
-      {backofficeRoutes.map((authRoute, idx) => (
-        <BackofficeRoute key={`auth_${idx}`} {...authRoute} />
-      ))}
+      <PrivateRoute exact path="/" component={Offers} />
+
+      <GuestRoute exact path="/sign_in" component={SignIn} />
+      <GuestRoute exact path="/sign_up" component={SignUp} />
+
+      <BackofficeRoute
+        exact
+        path="/backoffice"
+        component={BackofficeDashboard}
+      />
+      <BackofficeRoute
+        exact
+        path="/backoffice/offers"
+        component={BackofficeOffers}
+      />
+      <BackofficeRoute
+        exact
+        path="/backoffice/offers/new"
+        component={BackofficeOffersForm}
+      />
+      <BackofficeRoute
+        exact
+        path="/backoffice/offers/edit/:id"
+        component={BackofficeOffersForm}
+      />
     </Switch>
   );
 };

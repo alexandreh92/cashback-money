@@ -367,7 +367,6 @@ DEPENDENCIES
   simplecov (= 0.16.1)
   spring
   spring-watcher-listen (~> 2.0.0)
-  tzinfo-data
   vcr
   webdrivers (~> 4.0)
   webmock

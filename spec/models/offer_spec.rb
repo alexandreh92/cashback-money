@@ -9,6 +9,10 @@ RSpec.describe Offer, type: :model do
       is_expected.to validate_presence_of :starts_at
     end
 
+    it 'uniqueness' do
+      is_expected.to validate_uniqueness_of :advertiser_name
+    end
+
     it 'allow values' do
       is_expected.to allow_value('https://foo.com').for(:url)
       is_expected.not_to allow_value('foo.com').for(:url)
@@ -100,6 +104,27 @@ RSpec.describe Offer, type: :model do
         end
       end
     end
+
+    describe '#search' do
+      let!(:offer) { create(:offer, advertiser_name: name) }
+      let(:name) { 'Testing' }
+
+      context 'when name matches' do
+        subject { Offer.search(name) }
+
+        it 'returns matching offer' do
+          expect(subject.first.id).to eq(offer.id)
+        end
+      end
+
+      context 'when name matches' do
+        subject { Offer.search('No Match') }
+
+        it 'returns matching offer' do
+          expect(subject).to be_empty
+        end
+      end
+    end
   end
 
   describe 'methods' do
@@ -180,13 +205,13 @@ RSpec.describe Offer, type: :model do
         end
       end
     end
-  end
 
-  describe '#can_use_offer?' do
-    let(:offer) { create(:offer) }
+    describe '#can_use_offer?' do
+      let(:offer) { create(:offer) }
 
-    subject { offer.can_use_offer? }
+      subject { offer.can_use_offer? }
 
-    it { subject }
+      it { subject }
+    end
   end
 end
