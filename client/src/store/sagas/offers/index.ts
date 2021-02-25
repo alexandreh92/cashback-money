@@ -1,4 +1,4 @@
-import { call, put, select } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
 import { SagaIterator } from 'redux-saga';
 import { toastr } from 'react-redux-toastr';
 

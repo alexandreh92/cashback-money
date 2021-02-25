@@ -70,10 +70,12 @@ const Form: React.FC = () => {
 
       const { starts_at, ends_at, ...atrs } = data;
 
+      console.log(starts_at, ends_at);
+
       formRef.current?.reset({
         ...atrs,
         starts_at: parseISO(starts_at),
-        ends_at: parseISO(ends_at),
+        ends_at: ends_at ? parseISO(ends_at) : '',
       });
     } catch (err) {
       toastr.error('Error', 'An error has ocurred');

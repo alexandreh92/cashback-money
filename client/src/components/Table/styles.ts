@@ -62,7 +62,7 @@ export const Container = styled.table`
     box-shadow: unset;
   }
 
-  @media screen and (max-width: 750px) {
+  @media screen and (max-width: 870px) {
     & {
       border: 0;
     }

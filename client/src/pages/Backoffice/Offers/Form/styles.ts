@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import Flatbutton from '~/components/Flatbutton';
 
 import Form from '~/components/Form';
-import Input from '~/components/Input';
 
 export const Container = styled.div`
   display: flex;

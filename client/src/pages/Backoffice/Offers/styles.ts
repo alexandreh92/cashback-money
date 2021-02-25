@@ -28,10 +28,13 @@ export const ActionsContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   & > a,
   & > div {
     margin: 3px;
+  }
+  & > div:last-child {
+    margin-right: 0;
   }
 `;
 
@@ -113,6 +116,17 @@ export const NewButton = styled(Link)`
   margin: 0 0 0 10px;
 
   font: bold 14px/16px 'Roboto', sans-serif;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.lemoney};
+  }
+`;
+
+export const ExternalLink = styled.a`
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.black};
+  transition: all 200ms ease;
+  text-decoration: underline;
 
   &:hover {
     color: ${({ theme }) => theme.colors.lemoney};

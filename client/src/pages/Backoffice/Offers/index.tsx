@@ -21,6 +21,7 @@ import {
   SearchIcon,
   SearchInput,
   NewButton,
+  ExternalLink,
 } from './styles';
 
 const { getOffersRequest, toggleStatusRequest } = BackofficeOffersActions;
@@ -85,19 +86,27 @@ const Offers: React.FC = () => {
                   <Table.HeaderCell>Name</Table.HeaderCell>
                   <Table.HeaderCell>URL</Table.HeaderCell>
                   <Table.HeaderCell>Status</Table.HeaderCell>
+                  <Table.HeaderCell>Enabled</Table.HeaderCell>
                   <Table.HeaderCell>Actions</Table.HeaderCell>
                 </Table.Row>
               </Table.Head>
               <Table.Body>
                 {offers.map((offer) => (
                   <Table.Row key={offer.id}>
-                    <Table.DataCell>{offer.id}</Table.DataCell>
-                    <Table.DataCell>{offer.advertiser_name}</Table.DataCell>
-                    <Table.DataCell>{offer.url}</Table.DataCell>
-                    <Table.DataCell>
+                    <Table.DataCell data-label="ID">{offer.id}</Table.DataCell>
+                    <Table.DataCell data-label="Name">
+                      {offer.advertiser_name}
+                    </Table.DataCell>
+                    <Table.DataCell data-label="URL">
+                      <ExternalLink href={offer.url}>{offer.url}</ExternalLink>
+                    </Table.DataCell>
+                    <Table.DataCell data-label="Status">
                       {offer.status ? 'enabled' : 'disabled'}
                     </Table.DataCell>
-                    <Table.DataCell>
+                    <Table.DataCell data-label="Enabled">
+                      {`${offer.enabled}`}
+                    </Table.DataCell>
+                    <Table.DataCell data-label="Actions">
                       <ActionsContainer>
                         <ActionLink to={`offers/edit/${offer.id}`}>
                           edit
