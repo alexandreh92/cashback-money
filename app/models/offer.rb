@@ -5,6 +5,8 @@ class Offer < ApplicationRecord
   validates :description, length: { maximum: 500 }
   validates :advertiser_name, uniqueness: true
 
+  validate :end_date_gt_than_start_date
+
   # Scopes/Singleton methods
   scope :enabled, lambda {
                     lt_now = arel_table[:starts_at].lteq(Time.zone.now)
@@ -33,4 +35,15 @@ class Offer < ApplicationRecord
   def can_use_offer?
     status
   end
+
+  private
+
+    def end_date_gt_than_start_date
+      return if (starts_at.to_i <= ends_at.to_i) || ends_at.nil?
+
+      errors.add(
+        :ends_at,
+        'Must be greater than starts at'
+      )
+    end
 end

@@ -213,5 +213,45 @@ RSpec.describe Offer, type: :model do
 
       it { subject }
     end
+
+    describe '#end_date_gt_than_start_date' do
+      context 'with success' do
+        context 'when starts_at <= ends_at' do
+          let(:offer) do
+            build(:offer, starts_at: Time.zone.now, ends_at: Time.zone.now + 1.hour)
+          end
+
+          subject { offer.save }
+
+          it 'saves record' do
+            expect(subject).to eq(true)
+          end
+        end
+
+        context 'when ends_at = nil' do
+          let(:offer) do
+            build(:offer, starts_at: Time.zone.now, ends_at: nil)
+          end
+
+          subject { offer.save }
+
+          it 'saves record' do
+            expect(subject).to eq(true)
+          end
+        end
+      end
+
+      context 'with failure' do
+        let(:offer) do
+          build(:offer, starts_at: Time.zone.now + 1.hour, ends_at: Time.zone.now)
+        end
+
+        subject { offer.save }
+
+        it 'saves record' do
+          expect(subject).to eq(false)
+        end
+      end
+    end
   end
 end
