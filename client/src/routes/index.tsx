@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import PrivateRoute from '~/components/PrivateRoute';
 import GuestRoute from '~/components/GuestRoute';
@@ -17,7 +17,8 @@ import BackofficeOffersForm from '~/pages/Backoffice/Offers/Form';
 const Routes: React.FC = () => {
   return (
     <Switch>
-      <PrivateRoute exact path="/" component={Offers} />
+      <Route path="/" component={Offers} />
+      {/* <PrivateRoute exact path="/" component={Offers} /> */}
 
       <GuestRoute exact path="/sign_in" component={SignIn} />
       <GuestRoute exact path="/sign_up" component={SignUp} />
