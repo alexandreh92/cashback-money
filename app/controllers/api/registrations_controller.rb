@@ -9,8 +9,7 @@ module Api
       else
         render json: {
           message: I18n.t(
-            'controllers.messages.save_failure',
-            model: User.model_name.human
+            'controllers.messages.registration_failure'
           ),
           errors: user.errors.full_messages
         }, status: :bad_request

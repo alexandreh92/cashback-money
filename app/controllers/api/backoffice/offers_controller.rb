@@ -26,11 +26,17 @@ module Api
         if offer.save
           render json: {
             offer: offer,
-            message: 'Offer successfully created'
+            message: I18n.t(
+              'controllers.messages.create_success',
+              model: Offer.model_name.human
+            )
           }
         else
           render json: {
-            message: 'Cannot create Offer',
+            message: I18n.t(
+              'controllers.messages.save_failure',
+              model: Offer.model_name.human
+            ),
             errors: offer.errors.full_messages
           }, status: :bad_request
         end
@@ -42,11 +48,17 @@ module Api
         if offer.update(offer_params)
           render json: {
             offer: offer,
-            message: 'Offer successfully updated'
+            message: I18n.t(
+              'controllers.messages.update_success',
+              model: Offer.model_name.human
+            )
           }
         else
           render json: {
-            message: 'Cannot update Offer',
+            message: I18n.t(
+              'controllers.messages.save_failure',
+              model: Offer.model_name.human
+            ),
             errors: offer.errors.full_messages
           }, status: :bad_request
         end

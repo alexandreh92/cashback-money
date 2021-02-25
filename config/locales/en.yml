@@ -2,3 +2,11 @@ en:
   pundit:
     user_policy:
       backoffice?: You cannot perform this action.
+  controllers:
+    messages:
+      login_failure: Unable to login
+      invalid_login_params: Invalid login parameters
+      save_failure: Unable to save %{model}
+      registration_failure: Unable to complete registration
+      update_success: "%{model} updated successfully"
+      create_success: "%{model} created successfully"
