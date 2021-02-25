@@ -3,7 +3,7 @@ class ApplicationController < ActionController::API
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  respond_to :json
+  respond_to :json, :html
   around_action :handle_exceptions
 
   # React HTML Fallback

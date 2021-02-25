@@ -17,8 +17,7 @@ import BackofficeOffersForm from '~/pages/Backoffice/Offers/Form';
 const Routes: React.FC = () => {
   return (
     <Switch>
-      <Route path="/" component={Offers} />
-      {/* <PrivateRoute exact path="/" component={Offers} /> */}
+      <PrivateRoute exact path="/" component={Offers} />
 
       <GuestRoute exact path="/sign_in" component={SignIn} />
       <GuestRoute exact path="/sign_up" component={SignUp} />
