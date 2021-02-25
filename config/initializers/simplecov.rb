@@ -1,13 +1,17 @@
-# frozen_string_literal: true
+require 'simplecov'
+require 'coveralls'
 
-if ENV['RAILS_ENV'] == 'test'
-  require 'simplecov'
-  SimpleCov.start 'rails' do
-    puts 'required simplecov'
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
+  [SimpleCov::Formatter::HTMLFormatter,
+   Coveralls::SimpleCov::Formatter,
+   SimpleCov::Formatter::SimpleFormatter]
+)
 
-    add_group 'Services', 'app/services'
-    add_group 'Presenters', 'app/presenters'
+SimpleCov.start 'rails' do
+  puts 'required simplecov'
 
-    add_filter %w[channels jobs mailers]
-  end
+  add_group 'Services', 'app/services'
+  add_group 'Presenters', 'app/presenters'
+
+  add_filter %w[channels jobs mailers]
 end
