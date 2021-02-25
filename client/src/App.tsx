@@ -1,6 +1,6 @@
 import React from 'react';
 import ReduxToastr from 'react-redux-toastr';
-import { HashRouter } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
 import { useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 
@@ -12,12 +12,14 @@ import GlobalStyles from './styles/GlobalStyles';
 
 import Routes from './routes';
 
+import history from '~/services/history';
+
 function App() {
   const { theme } = useSelector((state: ApplicationState) => state);
 
   return (
     <ThemeProvider theme={theme}>
-      <HashRouter>
+      <ConnectedRouter history={history}>
         <GlobalStyles />
         <ReduxToastr
           timeOut={4000}
@@ -30,7 +32,7 @@ function App() {
           closeOnToastrClick
         />
         <Routes />
-      </HashRouter>
+      </ConnectedRouter>
     </ThemeProvider>
   );
 }
