@@ -1,21 +1,24 @@
 require 'factory_bot'
 require 'faker'
 
-admin_user = User.find_or_create_by(
-  name: 'Admin User',
-  email: 'admin@admin.com',
-  password: '123123',
-  password_confirmation: '123123'
+admin_user = User.find_or_initialize_by(
+  email: 'admin@admin.com'
 )
+admin_user.name = 'Admin User'
+admin_user.password = '123123'
+admin_user.password_confirmation = '123123'
 
+admin_user.save
 admin_user.add_role(:admin)
 
-User.find_or_create_by(
-  name: 'John Doe',
-  email: 'user@user.com',
-  password: '123123',
-  password_confirmation: '123123'
+dummy_user = User.find_or_initialize_by(
+  email: 'user@user.com'
 )
+dummy_user.name = 'John Doe'
+dummy_user.password = '123123'
+dummy_user.password_confirmation = '123123'
 
-FactoryBot.create_list(20, :offer, :active_without_delimitation, :sampled)
-FactoryBot.create_list(20, :offer, :active_with_delimitation, :sampled)
+dummy_user.save
+
+FactoryBot.create_list(:offer, 20, :active_without_delimitation, :sampled)
+FactoryBot.create_list(:offer, 20, :active_with_delimitation, :sampled)
