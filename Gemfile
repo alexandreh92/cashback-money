@@ -38,9 +38,10 @@ group :development, :test do
   gem 'webdrivers', '~> 4.0'
   gem 'shoulda-matchers'
   gem 'database_cleaner'
-  gem 'simplecov', '0.16.1'
+  gem 'simplecov'
   gem 'rubocop-rspec', require: false
   gem 'rails-controller-testing'
+  gem 'coveralls_reborn', '~> 0.18.0', require: false
 end
 
 group :development do
