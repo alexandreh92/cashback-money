@@ -18,6 +18,7 @@ gem 'faker'
 gem 'will_paginate', '~> 3.1.0'
 gem "pundit"
 gem "rolify"
+gem 'factory_bot_rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -26,7 +27,6 @@ group :development, :test do
   gem 'pry'
   gem 'better_errors'
   gem 'bullet'
-  gem 'factory_bot_rails'
   gem 'rswag'
   gem 'vcr'
   gem 'rspec'

@@ -36,5 +36,10 @@ FactoryBot.define do
     trait :premium do
       premium { true }
     end
+
+    trait :sampled do
+      enabled { [true, false].sample }
+      premium { [true, false].sample }
+    end
   end
 end
