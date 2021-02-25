@@ -1,3 +1,5 @@
+return unless ENV['RAILS_ENV'] == 'test' || ENV['RAILS_ENV'] == 'development'
+
 require 'simplecov'
 require 'coveralls'
 
