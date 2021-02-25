@@ -7,5 +7,7 @@ if ENV['RAILS_ENV'] == 'test'
 
     add_group 'Services', 'app/services'
     add_group 'Presenters', 'app/presenters'
+
+    add_filter %w[channels jobs mailers]
   end
 end

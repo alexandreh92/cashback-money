@@ -15,8 +15,6 @@ gem 'devise'
 gem 'devise-jwt'
 gem 'foreman'
 gem 'faker'
-gem 'carrierwave', '~> 2.0'
-gem 'fog-aws'
 gem 'will_paginate', '~> 3.1.0'
 gem "pundit"
 gem "rolify"
@@ -30,11 +28,10 @@ group :development, :test do
   gem 'bullet'
   gem 'factory_bot_rails'
   gem 'rswag'
-end
-
-group :test do
   gem 'vcr'
+  gem 'rspec'
   gem 'webmock'
+  gem 'rspec-rails'
   gem 'rspec-json_expectations'
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
